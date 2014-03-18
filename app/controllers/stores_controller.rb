@@ -54,7 +54,7 @@ class StoresController < ApplicationController
   # DELETE /stores/1
   # DELETE /stores/1.json
   def destroy
-    @store.destroy
+    Store.delete_all(_id: params[:id])
     respond_to do |format|
       format.html { redirect_to stores_url }
       format.json { head :no_content }

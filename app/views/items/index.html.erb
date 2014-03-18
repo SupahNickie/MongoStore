@@ -18,9 +18,9 @@
         <td><%= item.name %></td>
         <td><%= item.description %></td>
         <td><%= item.cost %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', store_item_path(@store, item) %></td>
+        <td><%= link_to 'Edit', edit_store_item_path(@store, item) %></td>
+        <td><%= link_to 'Destroy', store_item_path(@store, item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

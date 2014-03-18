@@ -55,9 +55,9 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @item.destroy
+    Store.where(_id: params[:store_id]).first.items.delete_all(_id: params[:id])
     respond_to do |format|
-      format.html { redirect_to items_url }
+      format.html { redirect_to store_items_path(@store) }
       format.json { head :no_content }
     end
   end
