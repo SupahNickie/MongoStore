@@ -15,5 +15,6 @@
   <%= @store.address %>
 </p>
 
+<%= link_to 'Store Items', store_items_path(@store) %> |
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>
