@@ -1,4 +1,4 @@
-<%= form_for(@order) do |f| %>
+<%= form_for [@store, @order] do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -16,8 +16,14 @@
     <%= f.text_field :customer_name %>
   </div>
   <div class="field">
-    <%= f.label :store %><br>
-    <%= f.select(:store, options_for_select(Store.all.map {|store| store.name})) %>
+    <%= f.fields_for :line_items do |v| %>
+      <%= v.label :name %><br>
+      <%= v.select(:name, options_for_select(@store.items.all.map {|item| item.name})) %>
+  </div>
+  <div class="field">
+      <%= v.label :quantity %><br>
+      <%= v.number_field :quantity %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

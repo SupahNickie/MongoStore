@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Customer name</th>
-      <th>Store</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,10 +14,9 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.customer_name %></td>
-        <td><%= order.store %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', store_order_path(@store, order) %></td>
+        <td><%= link_to 'Edit', edit_store_order_path(@store, order) %></td>
+        <td><%= link_to 'Destroy', store_order_path(@store, order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'New Order', new_store_order_path(@store) %>

@@ -6,4 +6,5 @@ class Store
   field :address, type: String
 
   embeds_many :items
+  embeds_many :orders
 end
