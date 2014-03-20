@@ -15,15 +15,8 @@
     <%= f.label :customer_name %><br>
     <%= f.text_field :customer_name %>
   </div>
-  <div class="field">
-    <%= f.fields_for :line_items do |v| %>
-      <%= v.label :name %><br>
-      <%= v.select(:name, options_for_select(@store.items.all.map {|item| item.name})) %>
-  </div>
-  <div class="field">
-      <%= v.label :quantity %><br>
-      <%= v.number_field :quantity %>
-    <% end %>
+  <%= associated_fields(f, :line_items, @line_items) %>
+  <%= link_to_add_fields "Add Another Item", f, :line_items %><br><br>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = @store.orders.new
+    @order.line_items.build
   end
 
   # GET /orders/1/edit
@@ -74,6 +75,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer_name, line_items_attributes: [:name, :quantity])
+      params.require(:order).permit(:customer_name, line_items_attributes: [:name, :quantity, '_destroy'])
     end
 end

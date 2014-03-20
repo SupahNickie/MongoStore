@@ -5,5 +5,13 @@
   <%= @order.customer_name %>
 </p>
 
+<p>
+  <strong>Ordered Items:</strong><br>
+  <% @order.line_items.each do |item| %><br>
+    Item: <%= item.name %><br>
+    Quantity: <%= item.quantity %><br>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_store_order_path(@store, @order) %> |
 <%= link_to 'Back', store_orders_path(@store) %>
